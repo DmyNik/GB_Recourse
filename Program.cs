@@ -72,27 +72,22 @@ static void PrintDiapazon(int m, int n)
     
 }
 
-static int Akkerman(int M, int N, int cnt)
+static int Akkerman(int M, int N)
 {
     
     int result = 0;
     
-    Console.WriteLine("> Вызов {0}; M = {1}; N = {2}", cnt, M, N);
-
     if ( M == 0 ) 
     {
-        Console.WriteLine("> Ветка 1");
         result = N+1;
     }
     else if ( M > 0 && N == 0 )
     {
-        Console.WriteLine("> Ветка 2");
-        result = Akkerman(M-1, 1, cnt+1);
+        result = Akkerman(M-1, 1);
     } 
     else if ( M > 0 && N > 0 )
     {
-        Console.WriteLine("> Ветка 3");
-        result = Akkerman(M-1, Akkerman(M, N-1, cnt+1), cnt+1);
+        result = Akkerman(M-1, Akkerman(M, N-1));
     } 
     else
     {
@@ -173,6 +168,8 @@ Console.WriteLine("\n> Задача 1.\n");
 int M = ReadInt("> Введите M: ");
 int N = ReadInt("> Введите N: ");
 
+Console.WriteLine("\n");
+
 PrintDiapazon(M, N);
 
 // Задача 2: Напишите программу вычисления функции Аккермана с 
@@ -196,7 +193,7 @@ N = ReadInt("> Введите N: ");
 //            \_
 //
 
-int A = Akkerman(M, N, 1);
+int A = Akkerman(M, N);
 
 Console.WriteLine("\n> A({0}, {1}) = {2}", M, N, A);
 
@@ -212,6 +209,6 @@ ShowArray(array);
 
 ShowArrayRevers(array);
 
-
+Console.WriteLine("\n\n> Работа программы завершена.\n");
 
 // --- end ------------------------------------------------------------------------------------
