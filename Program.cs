@@ -103,6 +103,59 @@ static int Akkerman(int M, int N, int cnt)
     
 }
 
+static int[] GenerateArray(int x, int leftRange = 1, int rightRange = 100) // Сгенерировать новый массив с заданными диапазонами
+{
+    int[] tempArray = new int[x];
+
+    Random rand = new();
+
+    rightRange++;
+
+    for (int i = 0; i < tempArray.Length; i++)
+    {
+        tempArray[i] = rand.Next(leftRange, rightRange);
+    }
+
+    return tempArray;
+}
+
+static void ShowArray(int[] arrayForPrint)
+{
+    int afpLength = arrayForPrint.Length;
+
+    Console.Write("> ");
+
+    for (int i = 0; i < afpLength; i++)
+    {
+        
+        Console.Write(arrayForPrint[i]);    
+
+        if ( i < afpLength - 1 ) { Console.Write(" "); } else { Console.WriteLine("."); }
+
+    }
+
+}
+
+static void ShowArrayRevers(int[] arrayForPrint, int cnt = 0)
+{
+    int afpLength = arrayForPrint.Length - 1;
+
+    if ( cnt == 0 ) { Console.Write("> "); }
+
+    if ( cnt < afpLength )
+    {        
+        
+        Console.Write(arrayForPrint[afpLength - cnt] + " ");
+
+        ShowArrayRevers(arrayForPrint, cnt + 1);   
+
+    }
+    else
+    {
+        Console.Write(arrayForPrint[afpLength - cnt] + ".");
+    }
+
+}
 
 // --- end ------------------------------------------------------------------------------------
 
@@ -153,7 +206,11 @@ Console.WriteLine("\n> A({0}, {1}) = {2}", M, N, A);
 
 Console.WriteLine("\n> Задача 3.\n");
 
+int[] array = GenerateArray(10);
 
+ShowArray(array);
+
+ShowArrayRevers(array);
 
 
 
